@@ -1,7 +1,7 @@
 {
   "name": "mbs-input-number",
   "description": "a vue-component for input-number",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "keywords": [
     "input-number",
     "mbs"
