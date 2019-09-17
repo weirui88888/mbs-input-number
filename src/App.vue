@@ -3,6 +3,7 @@
       <div class="demo">
           <mbs-input-number
           v-model="num"
+          :min="1"
           :max="11"
           :step="1"
           label="房间量">
