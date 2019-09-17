@@ -1,6 +1,9 @@
 var path = require('path')
 var webpack = require('webpack')
 
+// 引入clean-webpack-plugin插件
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
 module.exports = {
   entry: process.env.NODE_ENV === 'development' ? './src/main.js' : './src/export.js',
   output: {
@@ -9,6 +12,10 @@ module.exports = {
     filename: process.env.IS_HASH === 'true' ? process.env.npm_package_name + '.[name].[chunkhash].js' : 'build.js',
     libraryTarget: 'umd'
   },
+  plugins: [
+    // 使用插件，设置需要清除的目录
+    new CleanWebpackPlugin()
+  ],
   module: {
     rules: [
       {
@@ -16,8 +23,8 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader'
-        ],
-      },      {
+        ]
+      }, {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -46,7 +53,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      vue$: 'vue/dist/vue.esm.js'
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
